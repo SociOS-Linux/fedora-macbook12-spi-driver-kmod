@@ -1,15 +1,15 @@
 %global debug_package %{nil}
-%global githash 3f56ce0d33c47de921db77c3c9829ddc0e26ac9d
+%global githash be3639a6e9a0a385e3ed41d17e9c874af815cb0f
 Name: macbook12-spi-driver-kmod
-Version: 0.204
-Release: 0%{?dist}
+Version: 0.294
+Release: 1%{?dist}
 Summary: Akmod package for macbook12-spi-driver
 
 License: GPL-2.0
 URL: https://github.com/roadrunner2/macbook12-spi-driver
 Source: https://github.com/roadrunner2/macbook12-spi-driver/archive/%{githash}.tar.gz
 
-BuildRequires:  %{_bindir}/kmodtool
+BuildRequires:  %{_bindir}/kmodtool gcc
 Provides: macbook12-spi-driver-kmod-common
 
 ExclusiveArch:  i686 x86_64
@@ -67,5 +67,8 @@ Dummy package
 %files -n macbook12-spi-driver-kmod-common
 
 %changelog
+* Sat Aug 31 2019 Dick Marinus <dick@mrns.nl> - 0.294-1
+- Update to 294
+
 * Fri Mar 22 2019 Dick Marinus <dick@mrns.nl> - 0.204-0
 - initial version
