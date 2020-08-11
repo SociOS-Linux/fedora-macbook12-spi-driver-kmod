@@ -1,7 +1,7 @@
 %global debug_package %{nil}
-%global githash be3639a6e9a0a385e3ed41d17e9c874af815cb0f
+%global githash ddfbc7733542b8474a0e8f593aba91e06542be4f
 Name: macbook12-spi-driver-kmod
-Version: 0.294
+Version: 0.493
 Release: 1%{?dist}
 Summary: Akmod package for macbook12-spi-driver
 
@@ -67,6 +67,9 @@ Dummy package
 %files -n macbook12-spi-driver-kmod-common
 
 %changelog
+* Thu Aug 11 2020 Dick Marinus <dick@mrns.nl> - 0.493-1
+- Update to 493
+
 * Sat Aug 31 2019 Dick Marinus <dick@mrns.nl> - 0.294-1
 - Update to 294
 
