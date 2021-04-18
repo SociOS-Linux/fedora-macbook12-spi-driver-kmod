@@ -2,12 +2,13 @@
 %global githash ddfbc7733542b8474a0e8f593aba91e06542be4f
 Name: macbook12-spi-driver-kmod
 Version: 0.493
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Akmod package for macbook12-spi-driver
 
 License: GPL-2.0
 URL: https://github.com/roadrunner2/macbook12-spi-driver
 Source: https://github.com/roadrunner2/macbook12-spi-driver/archive/%{githash}.tar.gz
+Patch: 0001-Support-for-Kernel-5.10-from-Ecos-hj.patch
 
 BuildRequires:  %{_bindir}/kmodtool gcc
 Provides: macbook12-spi-driver-kmod-common
@@ -30,6 +31,9 @@ kmodtool --target %{_target_cpu}  --repo rpmfusion --kmodname %{name} %{?buildfo
 mkdir %{name}-%{version}-src
 pushd %{name}-%{version}-src
 tar xf %{SOURCE0}
+pushd macbook12-spi-driver-%{githash}
+%patch0 -p1
+popd
 popd
 
 for kernel_version in %{?kernel_versions} ; do
@@ -67,7 +71,10 @@ Dummy package
 %files -n macbook12-spi-driver-kmod-common
 
 %changelog
-* Thu Aug 11 2020 Dick Marinus <dick@mrns.nl> - 0.493-1
+* Sun Apr 18 2021 Dick Marinus <dick@mrns.nl> - 0.493-2
+- Fix iio_priv_to_dev trouble
+
+* Fri Sep 11 2020 Dick Marinus <dick@mrns.nl> - 0.493-1
 - Update to 493
 
 * Sat Aug 31 2019 Dick Marinus <dick@mrns.nl> - 0.294-1
