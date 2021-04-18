@@ -1,14 +1,14 @@
-From 32ea4fd880ba77bf3b982dc012cd9901e01a945d Mon Sep 17 00:00:00 2001
+From f5da095080b1d525b004d0fd6a0d669fb345775c Mon Sep 17 00:00:00 2001
 From: Dick Marinus <dick@mrns.nl>
-Date: Sun, 18 Apr 2021 21:17:41 +0200
+Date: Sun, 18 Apr 2021 21:29:51 +0200
 Subject: [PATCH] Support for Kernel 5.10 (from Ecos-hj)
 
 ---
- apple-ib-als.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ apple-ib-als.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/apple-ib-als.c b/apple-ib-als.c
-index 6c2949d..5bf6120 100644
+index 6c2949d..59ff38f 100644
 --- a/apple-ib-als.c
 +++ b/apple-ib-als.c
 @@ -37,6 +37,7 @@
@@ -19,20 +19,7 @@ index 6c2949d..5bf6120 100644
  
  #include "apple-ibridge.h"
  
-@@ -453,6 +454,12 @@ static void appleals_config_sensor(struct appleals_device *als_dev,
- 		hid_device_io_stop(als_dev->hid_dev);
- }
- 
-+static inline struct iio_dev *iio_priv_to_dev(void *priv)
-+{
-+	return (struct iio_dev *)((char *)priv -
-+				  ALIGN(sizeof(struct iio_dev), IIO_ALIGN));
-+}
-+
- static int appleals_config_iio(struct appleals_device *als_dev)
- {
- 	struct iio_dev *iio_dev;
-@@ -460,7 +467,12 @@ static int appleals_config_iio(struct appleals_device *als_dev)
+@@ -460,7 +461,12 @@ static int appleals_config_iio(struct appleals_device *als_dev)
  	struct appleals_device **priv;
  	int rc;
  
