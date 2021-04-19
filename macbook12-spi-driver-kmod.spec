@@ -8,7 +8,8 @@ Summary: Akmod package for macbook12-spi-driver
 License: GPL-2.0
 URL: https://github.com/roadrunner2/macbook12-spi-driver
 Source: https://github.com/roadrunner2/macbook12-spi-driver/archive/%{githash}.tar.gz
-Patch: 0001-Support-for-Kernel-5.10-from-Ecos-hj.patch
+# https://patch-diff.githubusercontent.com/raw/roadrunner2/macbook12-spi-driver/pull/55.diff
+Patch: 55.patch
 
 BuildRequires:  %{_bindir}/kmodtool gcc
 Provides: macbook12-spi-driver-kmod-common
